@@ -95,6 +95,27 @@ pip install -e ".[notebooks]"
 pip install -e ".[train,dev]"
 ```
 
+### Docker Installation (with ROS2 Support)
+
+For users who want to use SAM 3 with ROS2, we provide a Docker environment:
+
+```bash
+# Build the Docker image
+docker compose build
+
+# Start the container
+docker compose up -d
+
+# Enter the container
+docker exec -it sam3-ros2-dev bash
+```
+
+For detailed instructions, see:
+- [DOCKER_SETUP.md](DOCKER_SETUP.md) - Complete Docker setup guide (日本語)
+- [QUICKSTART_JA.md](QUICKSTART_JA.md) - Quick start guide (日本語)
+
+**Note**: The Docker environment uses Python 3.10 for ROS2 Humble compatibility.
+
 ## Getting Started
 
 ⚠️ Before using SAM 3, please request access to the checkpoints on the SAM 3
