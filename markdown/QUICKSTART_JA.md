@@ -2,6 +2,19 @@
 
 ## Docker環境の起動
 
+### PyTorchバージョンのカスタマイズ（上級者向け）
+
+使用しているGPU（例: RTX 5060 Tiなど）に合わせてPyTorchのバージョンを変更したい場合は、ビルド引数を指定できます。
+
+```bash
+# 例: PyTorch Nightlyビルド（開発版）を使用する場合
+# 注意: バージョン番号は実際に存在するものを指定してください
+docker compose build --build-arg PYTORCH_VERSION=2.8.0.dev20241201 --build-arg PYTORCH_INDEX_URL=https://download.pytorch.org/whl/nightly/cu126
+```
+`docker-compose.yml` の `args` セクションを編集することでも変更可能です。
+
+cudaは12.8,pytorchは2.9.0をインストールしている. \      
+参考：https://en.wikipedia.org/wiki/CUDA#GPUs_supported
 ```bash
 # コンテナを起動
 cd /home/guch1/ssd_yamaguchi/sam3
@@ -50,6 +63,17 @@ hf auth login
 1. https://huggingface.co/settings/tokens でアクセストークンを作成 \
 "New token" をクリック 
 2. https://huggingface.co/facebook/sam3 でSAM3チェックポイントへのアクセス許可をリクエスト
+
+### サンプルコード
+```
+python3 run_sam3_groceries.py
+```
+出力はgroceries_result.png
+プログラム内の引数で重要なのは
+'''
+image_pash : 検出したい画像のパス
+input_test : 検出したい物体名
+'''
 
 ### 2. 画像セグメンテーションの例
 

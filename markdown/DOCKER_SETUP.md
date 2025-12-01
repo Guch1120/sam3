@@ -51,8 +51,8 @@ docker compose build
 
 ```bash
 # 例: PyTorch Nightlyビルド（開発版）を使用する場合
-# 注意: バージョン番号は実際に存在するものを指定してください
-docker compose build --build-arg PYTORCH_VERSION=2.8.0.dev20241201 --build-arg PYTORCH_INDEX_URL=https://download.pytorch.org/whl/nightly/cu126
+# バージョン番号を "latest" にすると、その時点の最新版をインストールします
+docker compose build --build-arg PYTORCH_VERSION=latest --build-arg PYTORCH_INDEX_URL=https://download.pytorch.org/whl/nightly/cu126
 ```
 
 `docker-compose.yml` の `args` セクションを編集することでも変更可能です。

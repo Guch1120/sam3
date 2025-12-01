@@ -1,5 +1,6 @@
 # SAM3 with ROS2 Humble環境用のDockerfile
-FROM nvidia/cuda:12.6.0-cudnn-devel-ubuntu22.04
+FROM nvidia/cuda:12.8.0-cudnn-devel-ubuntu22.04
+
 
 # 環境変数の設定
 ENV DEBIAN_FRONTEND=noninteractive
@@ -59,13 +60,19 @@ COPY LICENSE ./
 COPY sam3/ ./sam3/
 
 # PyTorchのバージョンとIndex URLを引数で指定可能にする
-ARG PYTORCH_VERSION=2.7.0
-ARG PYTORCH_INDEX_URL=https://download.pytorch.org/whl/cu126
+ARG PYTORCH_VERSION=2.9.0
+#バージョン12.6
+ARG CUDA_VERSION=126
+ARG PYTORCH_INDEX_URL=https://download.pytorch.org/whl/cu${CUDA_VERSION}
 
 # PyTorchとCUDAのインストール
 # ROS2から既にインストールされているsympyとmpmpathを削除
 # torchvision, torchaudioはtorchのバージョンに合わせて依存解決させる
-RUN pip install --ignore-installed torch==${PYTORCH_VERSION} torchvision torchaudio --index-url ${PYTORCH_INDEX_URL}
+RUN if [ "${PYTORCH_VERSION}" = "latest" ]; then \
+    pip install --pre --ignore-installed torch torchvision torchaudio --index-url ${PYTORCH_INDEX_URL}; \
+    else \
+    pip install --ignore-installed torch==${PYTORCH_VERSION} torchvision torchaudio ;\
+    fi
 
 # SAM3とその依存関係のインストール
 RUN pip install -e .
