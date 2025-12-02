@@ -45,14 +45,16 @@ docker compose build
 
 ビルドには10-20分程度かかる場合があります。
 
-### PyTorchバージョンのカスタマイズ（上級者向け）
+### PyTorchバージョンのカスタマイズ
 
-使用しているGPU（例: RTX 5060 Tiなど）に合わせてPyTorchのバージョンを変更したい場合は、ビルド引数を指定できます。
+デフォルトでは、RTX 5000番台などの最新GPUに対応するため、**PyTorch 2.9 (CUDA 12.8対応)** を使用します。
+これは安定版リリースであり、`docker compose build` で自動的にインストールされます。
+
+古いバージョン（例: 2.7.0）を使用したい場合は、以下のようにビルド引数を指定してください：
 
 ```bash
-# 例: PyTorch Nightlyビルド（開発版）を使用する場合
-# バージョン番号を "latest" にすると、その時点の最新版をインストールします
-docker compose build --build-arg PYTORCH_VERSION=latest --build-arg PYTORCH_INDEX_URL=https://download.pytorch.org/whl/nightly/cu126
+# PyTorch 2.7.0 (CUDA 12.6) を使用する場合
+docker compose build --build-arg PYTORCH_VERSION=2.7.0 --build-arg PYTORCH_INDEX_URL=https://download.pytorch.org/whl/cu126
 ```
 
 `docker-compose.yml` の `args` セクションを編集することでも変更可能です。

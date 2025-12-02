@@ -6,10 +6,9 @@ services:
       args:
         # 必要に応じてバージョンを変更してください
         # 例: Nightlyビルドを使用する場合
-        # PYTORCH_VERSION: "2.8.0.dev20251120"
-        # PYTORCH_INDEX_URL: "https://download.pytorch.org/whl/nightly/cu126"
-        PYTORCH_VERSION: "2.7.0"
-        PYTORCH_INDEX_URL: "https://download.pytorch.org/whl/cu126"
+        # RTX 5000番台対応のためPyTorch 2.9 (CUDA 12.8対応)をデフォルトに設定
+        PYTORCH_VERSION: "2.9.0"
+        PYTORCH_INDEX_URL: "https://download.pytorch.org/whl/cu128"
     image: sam3-ros2:latest
     container_name: sam3-ros2-dev
     runtime: nvidia

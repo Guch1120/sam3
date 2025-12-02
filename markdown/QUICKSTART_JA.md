@@ -2,16 +2,12 @@
 
 ## Docker環境の起動
 
-### PyTorchバージョンのカスタマイズ（上級者向け）
+### PyTorchバージョンのカスタマイズ
 
-使用しているGPU（例: RTX 5060 Tiなど）に合わせてPyTorchのバージョンを変更したい場合は、ビルド引数を指定できます。
+デフォルトでは、RTX 5000番台（Blackwell）などの最新GPUに対応するため、**PyTorch 2.9 (CUDA 12.8対応)** を使用します。
+特別な設定なしで `docker compose build` を実行すれば、最新の環境が構築されます。
 
-```bash
-# 例: PyTorch Nightlyビルド（開発版）を使用する場合
-# 注意: バージョン番号は実際に存在するものを指定してください
-docker compose build --build-arg PYTORCH_VERSION=2.8.0.dev20241201 --build-arg PYTORCH_INDEX_URL=https://download.pytorch.org/whl/nightly/cu126
-```
-`docker-compose.yml` の `args` セクションを編集することでも変更可能です。
+安定版を使用したい場合は、`DOCKER_SETUP.md` を参照してください。
 
 cudaは12.8,pytorchは2.9.0をインストールしている. \      
 参考：https://en.wikipedia.org/wiki/CUDA#GPUs_supported
