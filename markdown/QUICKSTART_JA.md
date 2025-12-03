@@ -34,7 +34,7 @@ python3 --version
 
 # PyTorch 確認
 python3 -c "import torch; print('PyTorch:', torch.__version__); print('CUDA Available:', torch.cuda.is_available())"
-# 出力: PyTorch: 2.7.0+cu126
+# 出力: PyTorch: 2.9.0+cu128
 #       CUDA Available: True
 
 # SAM3 確認
