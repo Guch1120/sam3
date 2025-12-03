@@ -13,7 +13,7 @@ cudaは12.8,pytorchは2.9.0をインストールしている. \
 参考：https://en.wikipedia.org/wiki/CUDA#GPUs_supported
 ```bash
 # コンテナを起動
-cd /home/guch1/ssd_yamaguchi/sam3
+cd sam3
 docker compose up -d
 
 # コンテナに入る
