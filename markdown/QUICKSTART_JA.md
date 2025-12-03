@@ -43,6 +43,9 @@ python3 -c "import sam3; print('SAM3 Version:', sam3.__version__)"
 
 # ROS2 確認
 ros2 topic list
+# 出力: /parameter_events
+    　　/rosout
+
 ```
 
 ## SAM3の基本的な使い方
